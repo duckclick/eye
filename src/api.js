@@ -8,7 +8,14 @@ const manifest = {
     Wing: {
       trackDOM: { method: 'post', path: '/' }
     }
-  }
+  },
+  rules: [
+    {
+      values: {
+        gateway: {withCredentials: true}
+      }
+    }
+  ]
 }
 
 export default Mappersmith.forge(manifest)
