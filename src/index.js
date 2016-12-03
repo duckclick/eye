@@ -26,4 +26,7 @@ const listenTo = (events) => {
   })
 }
 
-listenTo(['DOMContentLoaded', 'DOMNodeInserted', 'DOMNodeRemoved'])
+document.addEventListener('DOMContentLoaded', () => {
+  listenTo(['DOMNodeInserted', 'DOMNodeRemoved'])
+  publishMarkup(getCurrentHTML())
+}, false)
