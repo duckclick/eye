@@ -12,9 +12,9 @@ module.exports = {
   entry: 'src/index.js',
   output: {
     path: 'dist/',
-    filename: 'ducktrack.eye.js',
-    sourceMapFilename: 'ducktrack.eye.map',
-    library: 'ducktrack.eye',
+    filename: 'duckclick.eye.js',
+    sourceMapFilename: 'duckclick.eye.map',
+    library: 'duckclick.eye',
     libraryTarget: 'umd'
   },
   target: 'web',

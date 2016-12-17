@@ -1,5 +1,5 @@
 {
-  "name": "ducktracker.eye",
+  "name": "duckclick.eye",
   "version": "0.1.0",
   "description": "",
   "author": "",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ducktrack/eye.git"
+    "url": "https://github.com/duckclick/eye.git"
   },
   "keywords": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ducktrack/eye/issues"
+    "url": "https://github.com/duckclick/eye/issues"
   },
-  "homepage": "https://github.com/ducktrack/eye",
+  "homepage": "https://github.com/duckclick/eye",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.0",
