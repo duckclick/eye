@@ -14,8 +14,8 @@ module.exports = {
     path: 'dist/',
     filename: 'duckclick.eye.js',
     sourceMapFilename: 'duckclick.eye.map',
-    library: 'duckclick.eye',
-    libraryTarget: 'umd'
+    library: 'DuckClickEye',
+    libraryTarget: 'var'
   },
   target: 'web',
   node: {

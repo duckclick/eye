@@ -1,4 +1,5 @@
 import API from './api'
+import jsBase64 from 'js-base64'
 
 const getCurrentHTML = () =>
   document.getElementsByTagName('html')[0].outerHTML
@@ -6,7 +7,7 @@ const getCurrentHTML = () =>
 const publishMarkup = (markup) => {
   const trackEntry = {
     created_at: new Date().getTime(),
-    markup: btoa(markup)
+    markup: jsBase64.Base64.encode(markup)
   }
 
   API.Wing
@@ -15,7 +16,7 @@ const publishMarkup = (markup) => {
       headers: { 'content-type': 'application/json;charset=utf-8'}
     })
     .then(() => console.log('tracked'))
-    .catch(() => console.log('quack!'))
+    .catch((e) => console.error('quack!', e))
 }
 
 const listenTo = (events) => {
@@ -26,7 +27,17 @@ const listenTo = (events) => {
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+let loaded = false
+const boot = () => {
+  if (loaded) {
+    return
+  }
+
+  loaded = true
   listenTo(['DOMNodeInserted', 'DOMNodeRemoved'])
   publishMarkup(getCurrentHTML())
-}, false)
+}
+
+export default boot
+document.addEventListener('DOMContentLoaded', () => boot(), false)
+window.onDuckClickEyeLoaded && onDuckClickEyeLoaded(boot)

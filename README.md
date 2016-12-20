@@ -14,7 +14,7 @@ npm run build
 python local-server.py
 ```
 
-`https://localhost:7273/dist/duckclick.eye.js`
+`https://localhost:7272/dist/duckclick.eye.js`
 
 ## Extension icons
 

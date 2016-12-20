@@ -27,6 +27,7 @@
     "webpack": "^1.13.3"
   },
   "dependencies": {
+    "js-base64": "^2.1.9",
     "mappersmith": "^0.13.4"
   }
 }

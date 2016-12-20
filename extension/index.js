@@ -10,12 +10,18 @@ chrome.runtime.sendMessage({ action: 'GET_SETTINGS' }, function(response) {
   if (settings.eye_url && activeRegex.test(document.location.hostname)) {
     chrome.runtime.sendMessage({ action: 'HIGHLIGHT_BROWSER_ACTION' })
 
+    var head = document.getElementsByTagName('head')[0]
+
+    var onLoad = document.createElement('script')
+    onLoad.type = 'text/javascript'
+    onLoad.text = 'window.onDuckClickEyeLoaded = function(boot) { boot() }'
+    head.appendChild(onLoad)
+
     var script = document.createElement('script')
     script.type = 'text/javascript'
     script.src = settings.eye_url
-
-    var head = document.getElementsByTagName('head')[0]
     head.appendChild(script)
+
     console.info('[duckclick.eye extension] Loaded')
   }
 });
