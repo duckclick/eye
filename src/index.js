@@ -1,10 +1,19 @@
 import API from './api'
 import jsBase64 from 'js-base64'
+import throttle from 'lodash.throttle'
+
+const THROTTLE_WAIT = 150
+let currentMarkup = null
 
 const getCurrentHTML = () =>
   document.getElementsByTagName('html')[0].outerHTML
 
 const publishMarkup = (markup) => {
+  if (markup === currentMarkup) {
+    return
+  }
+
+  currentMarkup = markup
   const trackEntry = {
     created_at: new Date().getTime(),
     markup: jsBase64.Base64.encode(markup)
@@ -18,9 +27,9 @@ const publishMarkup = (markup) => {
 
 const listenTo = (events) => {
   events.forEach((event) => {
-    document.addEventListener(event, () => {
+    document.addEventListener(event, throttle(() => {
       publishMarkup(getCurrentHTML())
-    }, false)
+    }, THROTTLE_WAIT), false)
   })
 }
 
