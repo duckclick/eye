@@ -30,6 +30,10 @@ const publishMarkup = (markup) => {
 }
 
 const isInTheViewport = (element) => {
+  if (!element.getBoundingClientRect) {
+    return false
+  }
+
   const rect = element.getBoundingClientRect()
   const x1 = -THRESHOLD
   const y1 = -THRESHOLD
