@@ -11,12 +11,9 @@ const publishMarkup = (markup) => {
   }
 
   API.Wing
-    .trackDOM({
-      body: JSON.stringify(trackEntry),
-      headers: { 'content-type': 'application/json;charset=utf-8'}
-    })
+    .trackDOM({ body: trackEntry })
     .then(() => console.log('tracked'))
-    .catch((e) => console.error('quack!', e))
+    .catch((response) => console.error('quack!', response.data()))
 }
 
 const listenTo = (events) => {

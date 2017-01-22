@@ -1,21 +1,18 @@
-import Mappersmith from 'mappersmith'
+import forge, { configs } from 'mappersmith'
+import EncodeJSON from 'mappersmith/middlewares/encode-json'
 
-Mappersmith.Env.USE_PROMISES = true
+configs.gatewayConfigs.XHR = {
+  withCredentials: true
+}
 
 const manifest = {
   host: '//localhost:7273',
+  middlewares: [ EncodeJSON ],
   resources: {
     Wing: {
       trackDOM: { method: 'post', path: '/' }
     }
-  },
-  rules: [
-    {
-      values: {
-        gateway: {withCredentials: true}
-      }
-    }
-  ]
+  }
 }
 
-export default Mappersmith.forge(manifest)
+export default forge(manifest)

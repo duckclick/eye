@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "js-base64": "^2.1.9",
-    "mappersmith": "^0.13.4"
+    "mappersmith": "2.0.0-rc4"
   }
 }
