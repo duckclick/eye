@@ -1,33 +1,42 @@
 import API from './api'
 import jsBase64 from 'js-base64'
 import throttle from 'lodash.throttle'
+import debounce from 'lodash.debounce'
 
 const THROTTLE_WAIT = 150
+const DEBOUNCE_WAIT = 500
 const THRESHOLD = 0
 
 let currentMarkup = null
 let screenWidth = null
 let screenHeight = null
+let buffer = []
 
-const getCurrentHTML = () =>
-  document.getElementsByTagName('html')[0].outerHTML
-
-const publishMarkup = (markup) => {
+const equeuePublishMarkup = (markup) => {
   if (markup === currentMarkup) {
     return
   }
 
   currentMarkup = markup
-  const trackEntry = {
+  buffer.push({
     created_at: new Date().getTime(),
     markup: jsBase64.Base64.encode(markup)
-  }
+  })
+
+  publishMarkup(buffer)
+}
+
+const getCurrentHTML = () =>
+  document.getElementsByTagName('html')[0].outerHTML
+
+const publishMarkup = debounce((entries) => {
+  const toConsume = entries.splice(0, entries.length)
 
   API.Wing
-    .trackDOM({ body: trackEntry })
+    .trackDOM({ body: toConsume })
     .then(() => console.log('tracked'))
     .catch((response) => console.error('quack!', response.data()))
-}
+}, DEBOUNCE_WAIT)
 
 const isInTheViewport = (element) => {
   if (!element.getBoundingClientRect) {
@@ -53,7 +62,7 @@ const listenTo = (events) => {
         return
       }
 
-      publishMarkup(getCurrentHTML())
+      equeuePublishMarkup(getCurrentHTML())
     }, THROTTLE_WAIT), false)
   })
 }

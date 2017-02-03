@@ -7,7 +7,14 @@
 3) click "Load unpacked extension"
 4) select "./extension" directory
 
-## Serve assets locally over https
+## Serve assets locally over HTTP
+
+```sh
+npm run build
+python -m SimpleHTTPServer 7272
+```
+
+## Serve assets locally over HTTPS
 
 ```sh
 npm run build
