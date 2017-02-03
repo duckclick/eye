@@ -29,6 +29,6 @@
   "dependencies": {
     "js-base64": "^2.1.9",
     "lodash.throttle": "^4.1.1",
-    "mappersmith": "2.0.0-rc4"
+    "mappersmith": "2.0.0-rc5"
   }
 }

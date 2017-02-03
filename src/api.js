@@ -5,7 +5,7 @@ configs.gatewayConfigs.XHR = {
   withCredentials: true
 }
 
-const manifest = {
+export default forge({
   host: '//localhost:7273',
   middlewares: [ EncodeJSON ],
   resources: {
@@ -13,6 +13,4 @@ const manifest = {
       trackDOM: { method: 'post', path: '/' }
     }
   }
-}
-
-export default forge(manifest)
+})
