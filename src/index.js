@@ -30,6 +30,7 @@ const getCurrentHTML = () =>
   document.getElementsByTagName('html')[0].outerHTML
 
 const publishMarkup = debounce((entries) => {
+  console.log(entries)
   const toConsume = entries.splice(0, entries.length)
 
   API.Wing
@@ -78,7 +79,7 @@ const boot = () => {
   screenWidth = window.innerWidth || document.documentElement.clientWidth
 
   listenTo(['DOMNodeInserted', 'DOMNodeRemoved'])
-  publishMarkup(getCurrentHTML())
+  equeuePublishMarkup(getCurrentHTML())
 }
 
 export default boot
