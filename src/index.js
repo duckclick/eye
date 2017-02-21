@@ -20,6 +20,7 @@ const equeuePublishMarkup = (markup) => {
   currentMarkup = markup
   buffer.push({
     created_at: new Date().getTime(),
+    url: window.location.href,
     markup: jsBase64.Base64.encode(markup)
   })
 
@@ -30,7 +31,6 @@ const getCurrentHTML = () =>
   document.getElementsByTagName('html')[0].outerHTML
 
 const publishMarkup = debounce((entries) => {
-  console.log(entries)
   const toConsume = entries.splice(0, entries.length)
 
   API.Wing
