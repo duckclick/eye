@@ -12,7 +12,7 @@ let screenWidth = null
 let screenHeight = null
 let buffer = []
 
-const equeuePublishMarkup = (markup) => {
+const enqueuePublishMarkup = (markup) => {
   if (markup === currentMarkup) {
     return
   }
@@ -63,7 +63,7 @@ const listenTo = (events) => {
         return
       }
 
-      equeuePublishMarkup(getCurrentHTML())
+      enqueuePublishMarkup(getCurrentHTML())
     }, THROTTLE_WAIT), false)
   })
 }
@@ -79,7 +79,7 @@ const boot = () => {
   screenWidth = window.innerWidth || document.documentElement.clientWidth
 
   listenTo(['DOMNodeInserted', 'DOMNodeRemoved'])
-  equeuePublishMarkup(getCurrentHTML())
+  enqueuePublishMarkup(getCurrentHTML())
 }
 
 export default boot
