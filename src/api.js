@@ -6,7 +6,7 @@ configs.gatewayConfigs.XHR = {
 }
 
 export default forge({
-  host: '//localhost:7273',
+  host: WING_HOST,
   middlewares: [ EncodeJSON ],
   resources: {
     Wing: {

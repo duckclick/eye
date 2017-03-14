@@ -21,7 +21,11 @@ module.exports = {
   node: {
     process: false
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      WING_HOST: JSON.stringify(process.env.WING_HOST || '//localhost:7273')
+    })
+  ],
   devtool: 'inline-source-map',
   module: {
     loaders: [
