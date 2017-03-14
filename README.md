@@ -20,10 +20,22 @@ python -m SimpleHTTPServer 7272
 ```sh
 yarn install
 yarn run build
-python local-server.py
+yarn start
 ```
 
 `https://localhost:7272/dist/duckclick.eye.js`
+
+## Build an image with docker
+
+```sh
+docker build -t eye .
+```
+
+## Run a docker container
+
+```sh
+docker run --rm -t -p 7272:7272 -e "WING_HOST=http://localhost:7273" eye
+```
 
 ## Extension icons
 
