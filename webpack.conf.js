@@ -23,7 +23,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      WING_HOST: JSON.stringify(process.env.WING_HOST || '//localhost:7273')
+      WING_HOST: JSON.stringify(process.env.WING_HOST || 'https://localhost:7273')
     })
   ],
   devtool: 'inline-source-map',
