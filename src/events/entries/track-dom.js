@@ -10,6 +10,9 @@ export default () => {
   setPreviousHTML(markup)
 
   return {
-    markup: jsBase64.Base64.encode(markup)
+    type: 'TrackDOM',
+    payload: {
+      markup: jsBase64.Base64.encode(markup)
+    }
   }
 }

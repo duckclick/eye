@@ -12,7 +12,7 @@ export default forge({
   middlewares: [ EncodeJSON ],
   resources: {
     Wing: {
-      trackDOM: { method: 'post', path: '/' }
+      trackDOM: { method: 'post', path: '/v1/collect' }
     }
   }
 })
