@@ -1,4 +1,5 @@
 import setupEvents from 'events'
+import { info, error } from 'logger'
 
 let loaded = false
 
@@ -7,6 +8,7 @@ const boot = () => {
     return
   }
 
+  info('Loading...')
   loaded = true
   setupEvents()
 }
