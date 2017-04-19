@@ -12,6 +12,7 @@ export default forge({
   middlewares: [ EncodeJSON ],
   resources: {
     Wing: {
+      createSession: { method: 'post', path: '/v1/session' },
       trackDOM: { method: 'post', path: '/v1/collect' }
     }
   }

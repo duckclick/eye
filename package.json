@@ -34,7 +34,7 @@
     "js-base64": "^2.1.9",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
-    "mappersmith": "^2.0.1",
+    "mappersmith": "^2.3.0",
     "promise": "^7.1.1"
   }
 }
